@@ -16,6 +16,7 @@ const signup = async(userData) => {
 const login = async(userData) => {
     
     const response = await API.post('/api/users/signin', userData);
+    console.log(response.data)
     if(response.data){
         localStorage.setItem('user', JSON.stringify(response.data));
     }
