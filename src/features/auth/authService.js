@@ -5,7 +5,7 @@ import {API} from '../../api'
 //Register User
 const signup = async(userData) => {
     
-    const response = await API.post('/api/users/signup', userData);
+    const response = await API.post('/api/users/signup/', userData);
     if(response.data){
         localStorage.setItem('user', JSON.stringify(response.data));
     }
@@ -15,7 +15,7 @@ const signup = async(userData) => {
 //signin User
 const login = async(userData) => {
     
-    const response = await API.post('/api/users/signin', userData);
+    const response = await API.post('/api/users/signin/', userData);
     console.log(response.data)
     if(response.data){
         localStorage.setItem('user', JSON.stringify(response.data));
