@@ -79,7 +79,7 @@ const MemoryDetailView = () => {
 
                 </div>
                 <div className='flex-1 h-[20rem]'>
-                    <img src={memory?.img} className="rounded-lg h-full w-full" />
+                    <img src={memory?.img} className="rounded-lg h-full w-full object-contain" />
                 </div>
                 
             </div>
