@@ -17,7 +17,7 @@ export const setMemory = createAsyncThunk('memory/setMemory', async(data,thunkAP
     try{
         const token = thunkAPI.getState().auth.user.token;
         //console.log(data);
-        //console.log(data)
+       
         return await memoryService.addMemory(data, token);
 
      
@@ -32,7 +32,7 @@ export const setMemory = createAsyncThunk('memory/setMemory', async(data,thunkAP
 export const updateMemory = createAsyncThunk('memory/updateMemory', async(data,thunkAPI) => {
     try{
         const token = thunkAPI.getState().auth.user.token;
-        console.log(data);
+        
         //console.log(data)
         return await memoryService.updateMemory(data, token);
 

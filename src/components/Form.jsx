@@ -12,7 +12,6 @@ const Form = ({qSearch, setQSearch, totalPosts, setCurrentPage, postsPerPage}) =
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {user} = useSelector(state => state.auth);
-  console.log(user)
   const view = useSelector(selectview);
   const [memory, setmemory] = useState({
     title:'',

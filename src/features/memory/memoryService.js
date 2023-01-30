@@ -15,7 +15,7 @@ const getMemory = async(data) => {
 }
 const addMemory = async(data, token) => {
    
-    console.log(data)
+   
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
@@ -28,7 +28,7 @@ const addMemory = async(data, token) => {
 
 const updateMemory = async(data, token) => {
    
-    console.log(data)
+    
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
