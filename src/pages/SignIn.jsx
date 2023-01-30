@@ -28,12 +28,11 @@ const { email, password } = user;
     e.preventDefault();
     
     dispatch(singin(user))
-    
-    navigate('/');
     setUser({ 
       email: '',
       password: '',
     })
+    if(user) navigate('/');
   }
   return (
     <div className="h-screen w-full   flex flex-col items-center  relative">

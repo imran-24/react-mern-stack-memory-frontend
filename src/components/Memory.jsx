@@ -40,7 +40,7 @@ const Memory = ({memory}) => {
 
   return (
     <div  className='w-full  sm:w-[16rem] h-[20rem] rounded-lg space-y-3 shadow-md bg-white relative '>
-        <img onClick={()=> navigate(`/memory/${memory._id}`)} src={memory.img} alt=""  className='w-full h-[10rem] object-cover rounded-t-lg cursor-pointer' />
+        <img onClick={()=> navigate(`/memory/${memory._id}`)} src={memory.img} alt=""  className='w-full h-[10rem] object-cover  rounded-t-lg cursor-pointer' />
         <div className='w-full px-4 absolute top-0'> 
             <div className='w-full flex items-center justify-between '>
                <div>

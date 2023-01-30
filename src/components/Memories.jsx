@@ -8,7 +8,7 @@ import Memory from './Memory'
 import Spinner from './Spinner'
 const Memories = ({qSearch, currentPosts, isLoading}) => {
  
-  if(isLoading) return <Spinner message='Loading' />
+  // if(isLoading) return <Spinner message='Loading' />
   return (
     <div className='flex-1 flex justify-center gap-4 flex-wrap mb-4'>
         {

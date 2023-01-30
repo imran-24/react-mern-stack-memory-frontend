@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "../pages/Home";
 import MemoryDetailView from "../pages/MemoryDetailView";
@@ -7,7 +8,7 @@ import SignUp from "../pages/SignUp";
 
 
 const Dashboard = () => {
-  const user = false;
+  const {user} = useSelector(state => state.auth)
   return (
     <div className="min-h-screen max-w-screen bg-gray-50">
 

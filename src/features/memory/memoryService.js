@@ -4,7 +4,7 @@ import {API} from '../../api'
 const getMemory = async(data) => {
     
     let url = '';
-    if(data.search) url =  `/api/memory/?search=${data.search}`;
+    if(data?.search) url =  `/api/memory/?search=${data.search}`;
     
     else{
         url = '/api/memory/';

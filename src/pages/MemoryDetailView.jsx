@@ -9,50 +9,49 @@ import Navbar from '../components/Navbar'
 import Spinner from '../components/Spinner'
 import { API_URl } from '../features/memory/memoryService'
 import {API} from '../api'
+import { getMemory } from '../features/memory/memorySlice'
 
 const MemoryDetailView = () => {
   const [memory, setMemory] = useState();
-  const [memories, setMemories] = useState([]);
+  const [suggestions, setSugggestion] = useState([]);
   const [loading, setLoading] = useState(true);
   
   const param = useParams();
+  const {memories, isLoading, isError, message} = useSelector((state) => state.memory);
   const dispatch = useDispatch();
   
   
   useEffect(()=>{
-    const getmemory = async() =>{
-        try{
-            const res = await API.get(`/api/memory/${param?.id}`)
-            setMemory(res.data)
-            setLoading(false)
+    if(memories.length === 0 ){
+        const getmemory = async() =>{
+            try{
+                const res = await API.get(`/api/memory/${param?.id}`)
+                setMemory(res.data)
+                setLoading(false)
+            }
+            catch(error){
+                console.log(error.message)
+            }
         }
-        catch(error){
-            console.log(error.message)
-        }
+        getmemory();
     }
-    getmemory();
+    else{
+       setMemory(
+        memories?.find(({_id}) => _id === param.id)
+    )  
+    setLoading(false)  
+    }
     
-    
-    
-},[param])
+},[param, memories])
  
-     useEffect( ()=>{
-        const getSuggestions = async() =>{
-          
-          try{
-             const response = await API.get(`/api/memory?new=${memory?.creator}`)
-             setMemories(response?.data.filter(
-                (sug) => sug._id !== memory._id));
-         }
-         catch(error){
-             console.log(error)
-         } 
-        }
-        if(memory?.creator) getSuggestions(); 
-        
+    useEffect( ()=>{
+        if(memories.length === 0) dispatch(getMemory()); 
+        setSugggestion(
+            memories?.filter( item => item?.creator === memory?.creator && item?._id !== memory?._id )
+        )
         
     },[memory])
-
+   
     // if(loading) return <Spinner message='Loading' />
 
   return (
@@ -89,13 +88,13 @@ const MemoryDetailView = () => {
             </div>
             <div>
                 {
-                    memories.length > 0 && <>
+                    suggestions.length > 0 && <>
                     <p className='text-gray-900'>You might also like:</p>
                     <div className='w-full flex justify-center border-t gap-4 flex-wrap p-4'>
                         
                         
                         {
-                            memories?.map(memory => (
+                            suggestions?.map(memory => (
                                 <MemorySuggestion key={memory._id} memory={memory} />
                             ))
                         }

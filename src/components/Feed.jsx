@@ -16,8 +16,7 @@ const Feed = () => {
   
   useEffect(() => {
     if(isError) console.log(message);
-    
-    dispatch(getMemory({search: qSearch}));
+    if(memories.length === 0) dispatch(getMemory({search: qSearch}));
 
     // return () => {
     //   dispatch(reset());

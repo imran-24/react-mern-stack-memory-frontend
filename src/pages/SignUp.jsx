@@ -37,8 +37,6 @@ const SignUp = () => {
         email,
         password
       }))
-      
-      navigate('/');
       setUser({
         first: '',
         second: '',
@@ -46,6 +44,7 @@ const SignUp = () => {
         password: '',
         retype:''
       })
+      if(user) navigate('/');
     }
   return (
     <div className="h-screen w-full   flex flex-col items-center  relative">
