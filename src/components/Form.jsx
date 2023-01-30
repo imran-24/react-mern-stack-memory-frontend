@@ -60,6 +60,7 @@ const Form = ({qSearch, setQSearch, totalPosts, setCurrentPage, postsPerPage}) =
         tags:'',
         img:''
     })
+    
 }
 
 // search
@@ -90,12 +91,19 @@ const handleUpdate = (e) => {
       tags:'',
       img:''
   })
+  dispatch(resetview())
 
   
 }
 
-const handleSearch = ()=>{
-  
+const handleClear = ()=>{
+  setmemory({
+    title:'',
+    message:'',
+    tags:'',
+    img:''
+})
+dispatch(resetview())
 }
   return (
     <div className='flex flex-col gap-4'>
@@ -120,10 +128,10 @@ const handleSearch = ()=>{
             />
         </div>
             {
-              view? <button onClick={handleUpdate} className='bg-rose-600 hover:bg-opacity-80 p-1 rounded text-white text-sm capitalize'>update</button>
+              view ? <button onClick={handleUpdate} className='bg-rose-600 hover:bg-opacity-80 p-1 rounded text-white text-sm capitalize'>update</button>
               :<button onClick={handleSubmit} className='bg-rose-600 hover:bg-opacity-80 p-1 rounded text-white text-sm capitalize'>submit</button>
             }
-            <button className='bg-blue-500 hover:bg-opacity-80 p-1 rounded text-white text-sm capitalize'>clear</button>
+            <button onClick={handleClear} className='bg-blue-500 hover:bg-opacity-80 p-1 rounded text-white text-sm capitalize'>clear</button>
         </div>
     </div>
     <div className='w-full  md:w-[20rem]  p-3 font-light bg-white rounded-md shadow-md flex flex-col gap-3 '>
