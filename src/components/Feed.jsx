@@ -10,7 +10,7 @@ const Feed = () => {
   const [qSearch, setQSearch] = useState('');
   const {memories, isLoading, isError, message} = useSelector((state) => state.memory);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(8);
+  const [postsPerPage, setPostsPerPage] = useState(6);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
